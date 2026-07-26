@@ -10,7 +10,7 @@
 # snippet in ~/.config/shelley/AGENTS.md.
 set -eu
 
-SELF_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+SELF_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 GO_GUIDE="$SELF_DIR/guides/go_programming_style_guide.md"
 GO_TEMPLATE="$SELF_DIR/templates/AGENTS.md.go.template"
 SNIPPET="$SELF_DIR/shelley-agents-snippet.md"
@@ -62,8 +62,9 @@ fi
 REPO=$1
 [ -d "$REPO" ] || { echo "no such directory: $REPO" >&2; exit 1; }
 
-REPO_ABS=$(CDPATH= cd -- "$REPO" && pwd)
-[ "$REPO_ABS" = "$HOME" ] && { echo "refusing to install into \$HOME — pass a project directory" >&2; exit 1; }
+REPO_ABS=$(CDPATH= cd -- "$REPO" && pwd -P)
+HOME_ABS=$(CDPATH= cd -- "$HOME" && pwd -P)
+[ "$REPO_ABS" = "$HOME_ABS" ] && { echo "refusing to install into \$HOME — pass a project directory" >&2; exit 1; }
 [ "$REPO_ABS" = "$SELF_DIR" ] && { echo "refusing to install into the standards library itself" >&2; exit 1; }
 
 [ -f "$REPO/go.mod" ] || echo "warning: $REPO has no go.mod" >&2
