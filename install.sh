@@ -61,6 +61,11 @@ fi
 
 REPO=$1
 [ -d "$REPO" ] || { echo "no such directory: $REPO" >&2; exit 1; }
+
+REPO_ABS=$(CDPATH= cd -- "$REPO" && pwd)
+[ "$REPO_ABS" = "$HOME" ] && { echo "refusing to install into \$HOME — pass a project directory" >&2; exit 1; }
+[ "$REPO_ABS" = "$SELF_DIR" ] && { echo "refusing to install into the standards library itself" >&2; exit 1; }
+
 [ -f "$REPO/go.mod" ] || echo "warning: $REPO has no go.mod" >&2
 
 mkdir -p "$REPO/docs"
