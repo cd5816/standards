@@ -14,28 +14,24 @@ The library is read-only on this VM: pull updates with
 ### General programming style
 
 Read `~/standards/guides/programming_style.md` before substantive coding
-work in any language. Language-specific guides (below) take precedence
-where they overlap.
+work in any language, including languages with a specific guide below. It
+is short and always applies. Language-specific guides add mechanics on top
+of it; they do not replace it.
 
 ### Go projects
 
 When working in a Go repository (`go.mod` present):
 
-- If the repo has `docs/go_programming_style_guide.md`, read it before
-  nontrivial Go changes and follow its §25 verification commands and §26
-  completion checklist before committing.
-- If the repo does NOT have the guide and you are doing substantive Go work,
-  set it up first (or ask the user if the change is trivial):
-  1. `git -C ~/standards pull --ff-only` (best effort; offline is fine)
-  2. Copy `~/standards/guides/go_programming_style_guide.md` into the
-     repo's `docs/` directory.
-  3. Create the repo's `AGENTS.md` from
-     `~/standards/templates/AGENTS.md.go.template`, filling in the project
-     specifics by reading the code. If an `AGENTS.md` already exists, merge
-     the template's "Go style" and "Before committing" sections into it
-     instead of overwriting.
-  4. Verify the repo passes the guide's §25 checks (gofmt, vet, build,
-     test -race), then commit the new files.
+- If the repo has `docs/go_programming_style_guide.md`, read its "How to
+  read this guide" index before nontrivial changes and load only the
+  sections that apply. Do not read the whole file. Always follow §25 and
+  §26 before committing.
+- If the repo lacks the guide and the work is substantive, set it up
+  first: `git -C ~/standards pull --ff-only` (best effort) then
+  `~/standards/install.sh <repo-path>`, and fill in the placeholders in
+  the generated `AGENTS.md`. Ask first if the change is trivial. If
+  `AGENTS.md` already exists, install.sh leaves it alone — merge the
+  template's "Go style" and "Before committing" sections in by hand.
 
 ### Frontend / design work
 

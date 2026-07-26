@@ -22,8 +22,11 @@ env vars. Delete this section for pure libraries.>
 
 ## Go style
 
-Before making nontrivial Go changes, read
-`docs/go_programming_style_guide.md` and follow it.
+Before making nontrivial Go changes, read the "How to read this guide"
+index in `docs/go_programming_style_guide.md` and load only the sections
+your change touches. Do not read the whole file. Also read
+`~/standards/guides/programming_style.md` if available — it applies to all
+languages.
 
 <PROJECT_STYLE_NOTES: 2–4 bullets of guide rules that especially apply
 here, or deliberate deviations from the guide, e.g.:

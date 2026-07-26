@@ -1,3 +1,20 @@
+# General Programming Style
+
+My default approach to writing code, in every language. Read this before
+substantive coding work regardless of what language-specific guide also
+applies — including Go.
+
+Language-specific guides (e.g. `go_programming_style_guide.md`) cover
+mechanics and idioms for their language. This file covers design judgment
+and applies on top of them.
+
+The examples below use Rust syntax (`&self`, `pub`, derives) because that is
+where the style was worked out. Translate to the language at hand: `pub` →
+exported identifiers, `&self`/`&mut self` → value vs pointer receivers, and
+so on. The rules are general.
+
+---
+
 ## Core Principle
 
 Write the simplest correct code first.

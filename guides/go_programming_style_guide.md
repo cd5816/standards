@@ -2,6 +2,49 @@
 
 This guide defines the default standards for writing, reviewing, and modifying Go code. Apply it unless repository-specific instructions, established project conventions, or explicit user requirements say otherwise.
 
+This guide covers Go mechanics. It sits alongside `programming_style.md`,
+which covers general design philosophy and applies to all languages
+including Go. Read both.
+
+## How to read this guide
+
+This guide is long. Do not read it end to end for a small change. Read this
+index, then extract only the sections your change touches:
+
+    sed -n '/^## 12\./,/^## 13\./p' docs/go_programming_style_guide.md
+
+Always read §1-3 (short) and §25-26 (verification and checklist). Read other
+sections only when the index says they apply.
+
+| § | Covers | Read when |
+|---|---|---|
+| 1 | Order of authority | always |
+| 2 | Pre-change reconnaissance | always |
+| 3 | Core principles | always |
+| 4 | Formatting, imports, file organization | adding files or imports |
+| 5 | Packages and module layout | adding/moving a package |
+| 6 | Naming (vars, receivers, interfaces, errors) | naming anything new |
+| 7 | Control flow | nontrivial branching |
+| 8 | Functions, receivers, constructors | adding functions or methods |
+| 9 | Data types, zero values, slices, maps, enums, time | defining types |
+| 10 | Interface design, typed nil | defining or accepting interfaces |
+| 11 | Generics | considering type parameters |
+| 12 | Error handling, wrapping, sentinels | any code that returns errors |
+| 13 | Context | any API crossing a call boundary |
+| 14 | Resource ownership and cleanup | opening files, conns, goroutines |
+| 15 | Concurrency | goroutines, channels, shared state |
+| 16 | HTTP clients and servers | network code |
+| 17 | Logging and configuration | log lines, flags, env |
+| 18 | Dependencies and modules | touching go.mod |
+| 19 | Testing | writing or changing tests |
+| 20 | Performance | measured hot path only |
+| 21 | Security and robustness | untrusted input, auth, crypto |
+| 22 | Documentation and comments | exported API changes |
+| 23 | Generated code, reflection, unsafe, CGO | rare; read before using any |
+| 24 | Common anti-patterns | skim during self-review |
+| 25 | Required verification commands | always, before committing |
+| 26 | Completion checklist | always, before committing |
+
 ## 1. Order of authority
 
 Follow guidance in this order:
@@ -44,6 +87,14 @@ Write Go that prioritizes, in order:
 Prefer ordinary, explicit Go over clever abstractions. Code should be easy to read from top to bottom without requiring the reader to simulate hidden control flow.
 
 A small amount of repetition is often preferable to a premature abstraction.
+
+These principles are the Go-specific expression of `programming_style.md`,
+which applies to all languages and should also be read. Where the two
+overlap, this guide governs Go mechanics (naming, error handling,
+concurrency idioms); the general guide governs design judgment (when to
+abstract, what to make public, how visible cost should be). They should not
+conflict; if they appear to, prefer this guide for Go-specific mechanics and
+raise the discrepancy.
 
 ## 4. Formatting and source organization
 
