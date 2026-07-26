@@ -1,0 +1,52 @@
+# Agent instructions
+
+<!--
+Template from https://github.com/cd5816/standards.
+Fill in every <PLACEHOLDER>, then delete these comments.
+Keep this file short: project facts agents need immediately, plus the
+Go workflow. The full style guide lives in docs/ and is read on demand.
+-->
+
+## Project
+
+<PROJECT_DESCRIPTION: one or two sentences — what this service/tool does,
+Go version, notable dependencies (e.g. "pure-Go SQLite, no CGO"), layout.>
+
+<KEY_PATHS: bullet list of the files/dirs an agent needs to know, e.g.:
+- `main.go` — HTTP server and handlers
+- `store.go` — persistence
+- `data/` — live database; never edit or delete>
+
+<RUNTIME: how it runs and is configured, e.g. systemd unit name, port,
+env vars. Delete this section for pure libraries.>
+
+## Go style
+
+Before making nontrivial Go changes, read
+`docs/go_programming_style_guide.md` and follow it.
+
+<PROJECT_STYLE_NOTES: 2–4 bullets of guide rules that especially apply
+here, or deliberate deviations from the guide, e.g.:
+- keep the flat layout (no `pkg/`/`cmd/` reshuffling)
+- do not introduce CGO
+- wrap errors with %w and context; keep changes focused>
+
+## Before committing
+
+Run the verification commands from §25 of the style guide:
+
+```sh
+gofmt -l .          # must print nothing
+go vet ./...
+go build ./...
+go test -race ./...
+```
+
+Then walk the completion checklist in §26 of the style guide against your
+diff. Do not commit if any check fails or was skipped without saying so.
+
+<DEPLOY: how to deploy after committing, e.g.:
+```sh
+go build -o <binary> . && sudo systemctl restart <service>
+```
+Delete this section if there is no deploy step.>
