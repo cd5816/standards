@@ -1,4 +1,4 @@
-#git diff --stat Design Guide — "Geist-flavored" Aesthetic
+# Design Guide — "Geist-flavored" Aesthetic
 
 Instructions for building clean, beautiful, Vercel/Geist-inspired web UIs. Follow
 these rules exactly. They are distilled from a real interface that the client
