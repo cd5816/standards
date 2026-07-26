@@ -1,6 +1,3 @@
-Here it is with the general programming style section added (placed first, since it applies to all languages, with the precedence rule stated):
-
-```markdown
 <!-- standards:begin (managed by ~/standards/install.sh; do not edit between markers) -->
 
 ## Personal standards library
@@ -46,6 +43,3 @@ If `~/standards/guides/DESIGN.md` exists, read it before frontend or UI
 design work.
 
 <!-- standards:end -->
-```
-
-Save that over `shelley-agents-snippet.md`, make sure `guides/programming_style.md` is in place, then commit and push both. Once it's up, tell me and I'll pull + re-run `install.sh` here so this VM picks it up.
